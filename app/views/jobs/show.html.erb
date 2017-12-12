@@ -1,6 +1,11 @@
 Title: <%= @job.title %>
 <br>
-
+Category: <% if @job.category.nil? %>
+                <%= "No Category"%> <%=link_to "Add Category", edit_company_job_path(@job.company) %>
+              <% else %>
+                <%= @job.category.title %>
+              <% end %>
+<br>  
 Description: <%= @job.description %>
 <br>
 
