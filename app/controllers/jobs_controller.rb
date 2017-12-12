@@ -25,12 +25,14 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @company = @job.company
+    @categories = Category.all
   end
 
   def update
     @job.update(job_params)
     flash.notice = "Job '#{@job.title}' Updated!"
-    redirect_to job_path(@job)
+    redirect_to company_job_path(@job.company, @job)
   end
 
   def destroy
