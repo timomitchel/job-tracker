@@ -8,6 +8,5 @@ All Jobs for <strong><%= @company.name %></strong>
     <li><%= link_to "Delete", company_job_path(job.company, job), method: "delete" %></li>
   </ul>
 <% end %>
-  <% @jobs.each do |job| %>
-  <%= link_to "New Job", [:new, @company, job] %>
-  <% end %>
+
+  <%= link_to "New Job", new_company_job_path(@company) %>
