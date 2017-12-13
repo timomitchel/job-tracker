@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   # before_action :set_category, only: [:index, :new, :create]
   def index
     @jobs = @company.jobs
+    @contact = Contact.new()
   end
 
   def new
