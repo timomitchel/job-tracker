@@ -14,4 +14,11 @@ describe "contact validations" do
 
     expect(contact).to be_invalid
   end
+
+   it "is invalid without a email" do 
+
+    contact = Contact.create(name: "Timo", position: "CEO")
+
+    expect(contact).to be_invalid
+   end
 end
