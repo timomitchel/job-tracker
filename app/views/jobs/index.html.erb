@@ -3,14 +3,18 @@ All Jobs for <strong><%= @company.name %></strong>
 <% @jobs.each do |job| %>
   <ul>
     <li>Job:<%= link_to job.title, company_job_path(job.company, job) %></li>
-    <li>Company:<%= link_to job.company.name, company_path(job.company) %></li>    
+    <li>Company:<%= link_to job.company.name, company_path(job.company) %></li> 
+    <li>Level of Interest:<%= job.level_of_interest %></li>           
+    <li>City:<%= job.city %></li>           
     <li><%= link_to "Edit", edit_company_job_path(job.company, job) %></li>
     <li><%= link_to "Delete", company_job_path(job.company, job), method: "delete" %></li>
   </ul>
 <% end %>
-<h3>All Contacts for <%= @company.name %></h3>
+<%= link_to "All Companies", companies_path %>
+<%= link_to "New Job", new_company_job_path(@company) %>
 <%= render partial: 'contacts/form' %>
 <br>
+<h3>All Contacts for <%= @company.name %></h3>
 <%= render partial: 'jobs/contact', collection: @company.contacts.reverse %>
 
-<%= link_to "New Job", new_company_job_path(@company) %>
+
