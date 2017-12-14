@@ -1,15 +1,18 @@
 Rails.application.routes.draw do
   root to: "dashboard#index"
   
+  #  get 'companies/:company_id/jobs', to: "jobs#sort_params", as: 'sort_params'
+
   resources :companies do
     resources :contacts, only: [:create]
     resources :jobs do
       resources :comments, only: [:create]
     end
+    
   end
   resources :categories
   resources :dashboard, only: [:index]
-  resources :jobs, only: [:index, :new]
+  # resources :jobs, only: [:index, :new]
 
   
 

@@ -1,23 +1,18 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit, :update]
   before_action :set_company, only: [:index, :new, :create]
+  before_action :set_contact, only: [:index]
 
-  def sort
+  def index
     if params[:sort] == 'location'
-      @jobs = Job.city
+      @jobs = Job.location
     elsif params[:sort] == 'interest'
       @jobs = Job.level_of_interest
     elsif params[:location]
       @jobs = Job.city(params[:location])
     else
-      @jobs = Jobs.all 
+      @jobs = @company.jobs
     end
-  end
-
-
-  def index
-    @jobs = @company.jobs
-    @contact = Contact.new()
   end
 
   def new
@@ -72,6 +67,10 @@ class JobsController < ApplicationController
 
   def set_category
     @category = Category.find(params[:category_id])
+  end
+
+  def set_contact
+    @contact = Contact.new()
   end
 
 end
