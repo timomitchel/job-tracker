@@ -1,11 +1,23 @@
 class JobsController < ApplicationController
   before_action :set_job, only: [:show, :destroy, :edit, :update]
   before_action :set_company, only: [:index, :new, :create]
-  # before_action :set_category, only: [:index, :new, :create]
+
+  def sort
+    if params[:sort] == 'location'
+      @jobs = Job.city
+    elsif params[:sort] == 'interest'
+      @jobs = Job.level_of_interest
+    elsif params[:location]
+      @jobs = Job.city(params[:location])
+    else
+      @jobs = Jobs.all 
+    end
+  end
+
+
   def index
     @jobs = @company.jobs
     @contact = Contact.new()
-    binding.pry
   end
 
   def new
