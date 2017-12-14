@@ -69,6 +69,8 @@ describe Company do
       
       expected = Company.top_three_companies_by_average_interest_level
       expect(expected.length).to eq(3)
+      expect(expected.class).to eq(Hash)
+      expect(expected).to eq({"Company15"=>5.0, "Company16"=>10.0, "Company17"=>4.0})
     end
   end
 end
