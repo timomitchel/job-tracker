@@ -2,8 +2,7 @@ require 'rails_helper'
 
 describe "User sees one category" do
   scenario "a user sees a category" do
-    category = Category.create!(title: "Sales")
-    # category.jobs.create!(title: "Developer", level_of_interest: 90, city: "Denver")
+    category = create(:category)
 
     visit category_path(category)
 

@@ -10,4 +10,5 @@ class Company < ApplicationRecord
     .group(:name)
     .average(:level_of_interest)
   end
+
 end

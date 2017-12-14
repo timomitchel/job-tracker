@@ -2,10 +2,10 @@ require 'rails_helper'
 
 describe "User deletes existing category" do
   scenario "a user can delete a category" do
-    category_1 = create(:category)
+    category = create(:category)
     visit categories_path
 
-    within(".category_#{category_1.id}") do
+    within(".category_#{category.id}") do
       click_link "Delete"
     end
 
